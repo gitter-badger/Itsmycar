@@ -5,27 +5,24 @@ import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import KeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import CSSModules from 'react-css-modules';
-import styles from './../../sass/mc-jumbotron.scss';
-import * as dialog from './../../actions/dialog';
+import styles from './../../sass/index/jumbotron.scss';
+import * as customerActions from './../actions/customer';
+import * as dialogActions from './../actions/dialog';
+import * as pageActions from './../actions/page';
 
-class MCJumbotron extends React.Component {
-  constructor(props) {
-    super(props);
-    this.top = props.top;
+class Jumbotron extends React.Component {
+  componentWillMount() {
+    const params = {per_page: 1};
+    this.props.dispatch(customerActions.index(params));
   }
   showDialog() {
-    this.props.dispatch(dialog.show());
+    this.props.dispatch(dialogActions.show());
   }
   render() {
-    this.top = this.top - 100;
-    const style = {
-      top: this.top
-    };
     return (
-      <div styleName='root'
-        style={style}>
+      <div styleName='root'>
         <div styleName='slogon'>
-          已有<span styleName='count'>{this.props.count}</span>人在宜买车购买到自己心仪的座驾
+          已有<span styleName='total'>{this.props.total}</span>人在宜买车购买到自己心仪的座驾
         </div>
         <FlatButton
           style={
@@ -40,8 +37,8 @@ class MCJumbotron extends React.Component {
         </FlatButton>
         <IconButton
           style={{
-            'backgroundColor': 'rgba(0, 0, 0, 0.3)',
-            'border-radius': '50%'
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            borderRadius: '50%'
           }}
           >
           <KeyboardArrowDown />
@@ -51,14 +48,15 @@ class MCJumbotron extends React.Component {
   }
 }
 
-const CSSMCJumbotron = CSSModules(MCJumbotron, styles);
+const CSSJumbotron = CSSModules(Jumbotron, styles);
 
 const mapStateToProps = (state) => {
+  const total = state.customerReducer? state.customerReducer.total : 0;
   return {
-    ...state
+    total: total
   };
 };
 
-const ConnectedMCJumbotron = connect(mapStateToProps)(CSSMCJumbotron);
+const ConnectedJumbotron = connect(mapStateToProps)(CSSJumbotron);
 
-export default ConnectedMCJumbotron;
+export default ConnectedJumbotron;

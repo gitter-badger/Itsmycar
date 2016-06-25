@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import FlatButton from 'material-ui/FlatButton';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
+import * as dialog from './../actions/dialog';
 
 const styles = {
   rootStyle: {
@@ -32,9 +34,12 @@ const styles = {
   }
 };
 
-export default class MCToolBar extends React.Component {
+class NavigationToolBar extends React.Component {
   constructor(props) {
     super(props);
+  }
+  showDialog() {
+    this.props.dispatch(dialog.show());
   }
   render() {
     return (
@@ -61,9 +66,20 @@ export default class MCToolBar extends React.Component {
             labelStyle={styles.buttonLabelStyle}
             primary={true}
             style={styles.buttonStyle}
+            onTouchTap={()=>this.showDialog()}
             />
         </ToolbarGroup>
       </Toolbar>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    open: state.dialogReducer.open
+  };
+};
+
+const ConnectedNavigationToolBar = connect(mapStateToProps)(NavigationToolBar);
+
+export default ConnectedNavigationToolBar;

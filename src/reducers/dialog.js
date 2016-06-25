@@ -1,11 +1,11 @@
-export function dialogReducer (state = {}, action) {
+export function dialogReducer (state = {open: false}, action) {
   switch (action.type) {
-    case 'SHOW_DIALOG':
+    case 'DIALOG_SHOW':
       return {
         ...state,
         open: true
       };
-    case 'DISMISS_DIALOG':
+    case 'DIALOG_DISMISS':
       return {
         ...state,
         open: false

@@ -3,7 +3,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url(./../img/jumbotron.jpg);
+  background-image: url(./../../img/jumbotron.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -14,7 +14,8 @@
     color: white;
     font-size: 2rem;
     margin-top: 16rem;
-    .count {
+    text-align: center;
+    .total {
       color: rgb(179, 226, 243);
     }
   }

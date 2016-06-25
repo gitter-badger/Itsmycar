@@ -1,11 +1,11 @@
 export function show() {
   return {
-    type: 'SHOW_DIALOG'
+    type: 'DIALOG_SHOW'
   };
 }
 
 export function dismiss() {
   return {
-    type: 'DISMISS_DIALOG'
+    type: 'DIALOG_DISMISS'
   };
 }

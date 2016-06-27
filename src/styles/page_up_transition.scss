@@ -1,0 +1,30 @@
+.appear {
+  opacity: 0.01;
+}
+.appear.appearActive {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.enter {
+  top: -100%;
+  transition: top .5s linear;
+}
+
+.enter.enterActive {
+  top: 0%;
+}
+
+.leave {
+  top: 0%;
+  transition: top .5s linear;
+}
+
+.leave.leaveActive {
+  top: 100%;
+}
+
+.linkActive {
+  color: #bbbbbb;
+  text-decoration: none;
+}

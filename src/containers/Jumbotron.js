@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import KeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import CSSModules from 'react-css-modules';
-import styles from './../../sass/index/jumbotron.scss';
+import styles from './../styles/jumbotron.scss';
 import * as customerActions from './../actions/customer';
 import * as dialogActions from './../actions/dialog';
 import * as pageActions from './../actions/page';
@@ -18,6 +18,10 @@ class Jumbotron extends React.Component {
   showDialog() {
     this.props.dispatch(dialogActions.show());
   }
+  componentWillAppear(callback) {
+    console.log(callback);
+    callback();
+  };
   render() {
     return (
       <div styleName='root'>

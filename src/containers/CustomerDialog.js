@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { green500, blue500 } from 'material-ui/styles/colors';
 import CSSModules from 'react-css-modules';
-import styles from './../../sass/index/customer_dialog.scss';
+import styles from './../styles/customer_dialog.scss';
 import * as dialogActions from './../actions/dialog';
 import * as customerActions from './../actions/customer';
 

@@ -1,11 +1,13 @@
-export function dialogReducer(state = {}, action) {
+export function alertReducer(state = {}, action) {
   switch (action.type) {
-    case 'DIALOG_SHOW':
+    case 'ALERT_SHOW':
       return {
         ...state,
+        title: action.title,
+        content: action.content,
         open: true
       };
-    case 'DIALOG_DISMISS':
+    case 'ALERT_DISMISS':
       return {
         ...state,
         open: false

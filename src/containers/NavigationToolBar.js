@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import FlatButton from 'material-ui/FlatButton';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 import * as dialog from './../actions/dialog';
@@ -23,6 +24,7 @@ const styles = {
     marginLeft: 10
   },
   logoStyle: {
+    cursor: 'pointer',
     width: '50%'
   },
   iconStyle: {
@@ -41,6 +43,11 @@ class NavigationToolBar extends React.Component {
   showDialog() {
     this.props.dispatch(dialog.show());
   }
+  goIndex() {
+    this.props.dispatch(push({
+      pathname: '/'
+    }));
+  }
   render() {
     return (
       <Toolbar
@@ -50,15 +57,16 @@ class NavigationToolBar extends React.Component {
           style={styles.groupStyle}
           >
           <img
-            src='/img/logo.png'
+            src='/src/images/logo.png'
             style={styles.logoStyle}
+            onTouchTap={() => this.goIndex()}
           />
         </ToolbarGroup>
         <ToolbarGroup
           style={styles.groupStyle}
           >
           <img
-            src='/img/telephone.png'
+            src='/src/images/telephone.png'
             style={styles.iconStyle}
           />
           <FlatButton
@@ -75,8 +83,9 @@ class NavigationToolBar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  const open = state.dialogReducer.open;
   return {
-    open: state.dialogReducer.open
+    open: open
   };
 };
 

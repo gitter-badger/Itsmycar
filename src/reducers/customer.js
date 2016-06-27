@@ -1,4 +1,4 @@
-export function customerReducer (state = {}, action) {
+export function customerReducer(state = {}, action) {
   switch (action.type) {
     case 'CUSTOMER_CREATE':
       return {
@@ -6,7 +6,6 @@ export function customerReducer (state = {}, action) {
         customer: action.customer
       };
     case 'CUSTOMER_INDEX':
-    console.log(action.total);
       return {
         ...state,
         customers: action.customers,

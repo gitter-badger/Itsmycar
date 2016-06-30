@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import FlatButton from 'material-ui/FlatButton';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
-import * as dialog from './../actions/dialog';
+import * as customerDialog from './../actions/customer_dialog';
 
 const styles = {
   rootStyle: {
@@ -40,8 +40,8 @@ class NavigationToolBar extends React.Component {
   constructor(props) {
     super(props);
   }
-  showDialog() {
-    this.props.dispatch(dialog.show());
+  showDialog(car_name) {
+    this.props.dispatch(customerDialog.show(car_name));
   }
   goIndex() {
     this.props.dispatch(push({
@@ -83,7 +83,7 @@ class NavigationToolBar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const open = state.dialogReducer.open;
+  const open = state.customerDialogReducer.open;
   return {
     open: open
   };

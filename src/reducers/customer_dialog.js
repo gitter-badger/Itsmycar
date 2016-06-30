@@ -1,13 +1,12 @@
-export function alertReducer(state = {}, action) {
+export function customerDialogReducer(state = {}, action) {
   switch (action.type) {
-    case 'ALERT_SHOW':
+    case 'CUSTOMER_DIALOG_SHOW':
       return {
         ...state,
-        title: action.title,
-        content: action.content,
-        open: true
+        open: true,
+        car_name: action.car_name
       };
-    case 'ALERT_DISMISS':
+    case 'CUSTOMER_DIALOG_DISMISS':
       return {
         ...state,
         open: false

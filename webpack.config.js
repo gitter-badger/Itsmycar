@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
     entry: "./src/index.js",
@@ -14,6 +15,11 @@ module.exports = {
             }
         })
     ],
+    resolve: {
+      root: [
+        path.resolve('./src')
+      ]
+    },
     module: {
         loaders: [{
             test: /\.css$/,
@@ -42,8 +48,8 @@ module.exports = {
                 }
             }
         }, {
-            test: /\.jpg$/,
-            loader: "file-loader"
+            test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+            loader: "file"
         }]
     },
     devtool: 'cheap-module-source-map',

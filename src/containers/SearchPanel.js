@@ -7,11 +7,15 @@ import KeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-dow
 import LinearProgress from 'material-ui/LinearProgress';
 import CSSModules from 'react-css-modules';
 import styles from './../styles/search_panel.scss';
+import BrandSearchDialog from './../containers/BrandSearchDialog';
 import * as customerActions from './../actions/customer';
-import * as dialogActions from './../actions/dialog';
+import * as brandSearchDialogActions from './../actions/brand_search_dialog';
 import * as pageActions from './../actions/page';
 
 class SearchPanel extends React.Component {
+  showBrandSearchDialog() {
+    this.props.dispatch(brandSearchDialogActions.show());
+  }
   render() {
     return (
       <div styleName='root'>
@@ -23,6 +27,7 @@ class SearchPanel extends React.Component {
             <h4 styleName='label'>品牌：</h4>
             <RaisedButton
               label='添加品牌'
+              onTouchTap={()=>this.showBrandSearchDialog()}
               />
           </div>
           <div styleName='line'>
@@ -81,6 +86,7 @@ class SearchPanel extends React.Component {
           >
           <KeyboardArrowDown />
         </IconButton>
+        <BrandSearchDialog open={true} />
       </div>
     );
   }

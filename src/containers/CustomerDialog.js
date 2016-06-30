@@ -7,7 +7,7 @@ import TextField from 'material-ui/TextField';
 import { green500, blue500 } from 'material-ui/styles/colors';
 import CSSModules from 'react-css-modules';
 import styles from './../styles/customer_dialog.scss';
-import * as dialogActions from './../actions/dialog';
+import * as customerDialogActions from './../actions/customer_dialog';
 import * as customerActions from './../actions/customer';
 
 const inputStyles = {
@@ -19,11 +19,11 @@ const inputStyles = {
 class CustomerDialog extends React.Component {
 
   handleOpen() {
-    this.props.dispatch(dialogActions.show());
+    this.props.dispatch(customerDialogActions.show());
   };
 
   handleClose() {
-    this.props.dispatch(dialogActions.dismiss());
+    this.props.dispatch(customerDialogActions.dismiss());
   };
 
   handleSubmit() {
@@ -31,10 +31,12 @@ class CustomerDialog extends React.Component {
     const telephone = this.refs.telephone.getValue();
     const car_name = this.refs.car_name.getValue();
     const customer = {
-      name: name,
-      telephone: telephone,
-      intented_cars_attributes: {
-        name: car_name
+      customer: {
+        name: name,
+        telephone: telephone,
+        intented_cars_attributes: [{
+          name: car_name
+        }]
       }
     };
     this.props.dispatch(customerActions.create(customer));
@@ -54,13 +56,15 @@ class CustomerDialog extends React.Component {
         onTouchTap={() => this.handleSubmit()}
       />,
     ];
+    const open = this.props.open? this.props.open: false;
+    const car_name = this.props.car_name? this.props.car_name: '';
     return (
       <div>
         <Dialog
           title="请填写您的购车意向"
           actions={actions}
           modal={true}
-          open={this.props.open}
+          open={open}
         >
           <TextField
             fullWidth={true}
@@ -68,6 +72,7 @@ class CustomerDialog extends React.Component {
             hintText="心仪车型"
             floatingLabelText="请填写您中意的车型名称"
             errorStyle={inputStyles.errorStyle}
+            defaultValue={car_name}
             />
           <br />
           <TextField
@@ -97,7 +102,8 @@ const CSSCustomerDialog = CSSModules(CustomerDialog, styles);
 
 const mapStateToProps = (state) => {
   return {
-    open: state.dialogReducer.open
+    open: state.customerDialogReducer.open,
+    car_name: state.customerDialogReducer.car_name
   };
 };
 

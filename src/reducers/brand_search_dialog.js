@@ -1,19 +1,18 @@
-export function dialogReducer(state = {}, action) {
+export function brandSearchDialogReducer(state = {}, action) {
   switch (action.type) {
-    case 'DIALOG_SHOW':
+    case 'BRAND_SEARCH_DIALOG_SHOW':
       return {
         ...state,
         open: true
       };
-    case 'DIALOG_DISMISS':
+    case 'BRAND_SEARCH_DIALOG_DISMISS':
       return {
         ...state,
         open: false
       };
     default:
       return {
-        ...state,
-        open: false
+        ...state
       };
   }
 }

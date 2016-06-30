@@ -7,7 +7,7 @@ import KeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-dow
 import CSSModules from 'react-css-modules';
 import styles from './../styles/jumbotron.scss';
 import * as customerActions from './../actions/customer';
-import * as dialogActions from './../actions/dialog';
+import * as customerDialogActions from './../actions/customer_dialog';
 import * as pageActions from './../actions/page';
 
 class Jumbotron extends React.Component {

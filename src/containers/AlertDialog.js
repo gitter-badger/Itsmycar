@@ -6,9 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { green500, blue500 } from 'material-ui/styles/colors';
 import CSSModules from 'react-css-modules';
-import styles from './../styles/customer_dialog.scss';
 import * as alertActions from './../actions/alert';
-import * as dialogActions from './../actions/dialog';
 import * as customerActions from './../actions/customer';
 
 const inputStyles = {
@@ -37,13 +35,14 @@ class AlertDialog extends React.Component {
         onTouchTap={() => this.handleClose()}
       />,
     ];
+    const open = this.props.open? this.props.open: false;
     return (
       <div>
         <Dialog
           title={this.props.title}
           actions={actions}
           modal={true}
-          open={this.props.open}
+          open={open}
         >
           {this.props.content}
         </Dialog>
@@ -51,8 +50,6 @@ class AlertDialog extends React.Component {
     );
   }
 }
-
-const CSSAlertDialog = CSSModules(AlertDialog, styles);
 
 const mapStateToProps = (state) => {
   const title = state.alertReducer.title;
@@ -65,6 +62,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ConnectedAlertDialog = connect(mapStateToProps)(CSSAlertDialog);
+const ConnectedAlertDialog = connect(mapStateToProps)(AlertDialog);
 
 export default ConnectedAlertDialog;

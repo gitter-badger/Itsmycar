@@ -1,0 +1,41 @@
+.root {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  .image {
+    width: 30%;
+    img {
+      width: 100%;
+    }
+  }
+  .content {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    margin-right: 5%;
+    .title {
+      font-size: 1.5rem;
+      color: white;
+      font-weight: bold;
+    }
+    .indicative-price {
+      font-size: 0.5rem;
+      color: white;
+      font-weight: lighter;
+    }
+    .price {
+      margin-bottom: 1rem;
+      .title {
+        font-size: 1rem;
+        color: white;
+        margin-right: 0.5rem;
+      }
+      .value {
+        color: rgb(109, 212, 255);
+      }
+    }
+  }
+}

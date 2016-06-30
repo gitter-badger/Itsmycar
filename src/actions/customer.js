@@ -1,6 +1,6 @@
 import * as Customer from './../models/customer';
 import * as alertActions from './alert';
-import * as dialogActions from './dialog';
+import * as customerDialogActions from './customer_dialog';
 
 const createComplete = (data = {}) => {
   return {
@@ -30,6 +30,7 @@ export const create = (customer) => {
     Customer.create(customer,
       (data) => {
         dispatch(alertActions.show('', `您好，${data.name}，我们的专业顾问将会全程为您服务`));
+        dispatch(customerDialogActions.dismiss());
       },
       (error) => {
         console.log(error);
